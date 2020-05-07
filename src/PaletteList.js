@@ -33,7 +33,11 @@ const styles = {
   },
 };
 class PaletteList extends Component {
+  goToPalette(id) {
+    this.props.history.push(`/palette/${id}`);
+  }
   render() {
+    console.log(this.props);
     const { colors, classes } = this.props;
     return (
       <div className={classes.root}>
@@ -43,7 +47,10 @@ class PaletteList extends Component {
           </nav>
           <div className={classes.palettes}>
             {colors.map((palette) => (
-              <MiniPalette {...palette} key={palette.id}></MiniPalette>
+              <MiniPalette
+                {...palette}
+                handleClick={() => this.goToPalette(palette.id)}
+                key={palette.id}></MiniPalette>
             ))}
           </div>
         </div>
