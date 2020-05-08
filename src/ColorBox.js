@@ -16,7 +16,7 @@ export default class ColorBox extends Component {
     }, 1500);
   }
   render() {
-    const { name, background, moreUrl } = this.props;
+    const { name, background, moreUrl, showLink } = this.props;
     let className;
     this.state.copied
       ? (className = 'show copy-overlay')
@@ -36,9 +36,11 @@ export default class ColorBox extends Component {
             <button className='copy-button'>Copy!</button>
           </CopyToClipboard>
         </div>
-        <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
-          <span className='see-more'>More</span>
-        </Link>
+        {showLink && (
+          <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
+            <span className='see-more'>More</span>
+          </Link>
+        )}
       </div>
     );
   }
