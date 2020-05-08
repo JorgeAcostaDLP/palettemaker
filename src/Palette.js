@@ -26,7 +26,7 @@ class Palette extends Component {
         colorId={color.id}
         background={color[format]}
         moreUrl={`/palette/${id}/${color.id}`}
-        showLink={true}
+        showingFullPalette={true}
         name={color.name}></ColorBox>
     ));
     return (
