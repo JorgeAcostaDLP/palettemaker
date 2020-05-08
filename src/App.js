@@ -29,6 +29,10 @@ class App extends Component {
                 findPalette(props.match.params.id, seedColors)
               )}></Palette>
           )}></Route>
+        <Route
+          exact
+          path='/palette/:paletteId/:colorId'
+          render={() => <h1>SINGLE COLOR PAGE</h1>}></Route>
       </Switch>
     );
   }
