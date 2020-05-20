@@ -1,4 +1,4 @@
-.Navbar {
+/* .Navbar {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -23,16 +23,16 @@
   width: 340px;
   margin: 0 10px;
   display: inline-block;
-}
+} */
 
-.slider .rc-slider-track {
+/* .slider .rc-slider-track {
   background-color: transparent;
 }
 
 .slider .rc-slider-rail {
   height: 8px;
-}
-
+} */
+/* 
 .slider .rc-slider-handle,
 .slider .rc-slider-handle:active,
 .slider .rc-slider-handle:focus,
@@ -45,12 +45,14 @@
   height: 13px;
   margin-top: -3px;
   margin-left: -7px;
-}
+} */
 
-.slider-container {
-}
-
-.select-container {
+/* .slider-container {
   margin-left: auto;
   margin-right: 1rem;
 }
+
+.select-container {
+  margin-left: 300rem;
+  margin-right: 1rem;
+} */
