@@ -105,7 +105,7 @@ class NewPaletteForm extends Component {
       color: this.state.currentColor,
       name: this.state.newName,
     };
-    this.setState({ colors: [...this.state.colors, newColor] });
+    this.setState({ colors: [...this.state.colors, newColor], newName: '' });
   }
 
   handleChange(evt) {
@@ -180,8 +180,8 @@ class NewPaletteForm extends Component {
               onChange={this.handleChange}
               validators={['required', 'isColorNameUnique', 'isColorUnique']}
               errorMessages={[
-                'This field is required',
-                'Color name must be Unique!',
+                'Color must have a name',
+                'Color name must be unique',
                 'Color already in use',
               ]}></TextValidator>
             <Button
