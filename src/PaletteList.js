@@ -9,7 +9,7 @@ class PaletteList extends Component {
     this.props.history.push(`/palette/${id}`);
   }
   render() {
-    console.log(this.props);
+
     const { colors, classes } = this.props;
     return (
       <div className={classes.root}>

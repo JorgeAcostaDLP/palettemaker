@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
+
 const drawerWidth = 400;
 
 const styles = (theme) => ({
@@ -86,7 +87,9 @@ class NewPaletteForm extends Component {
     };
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
+
   }
 
   componentDidMount() {
@@ -123,6 +126,17 @@ class NewPaletteForm extends Component {
     this.setState({ currentColor: newColor.hex });
   };
 
+  handleSubmit() {
+    let newName = 'New Test Palette'
+    const newPalette = {
+      paletteName: newName,
+      colors: this.state.colors,
+      id: newName.toLowerCase().replace(/ /g, '-')
+    }
+    this.props.savePalette(newPalette)
+    this.props.history.push('/')
+  }
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -132,6 +146,8 @@ class NewPaletteForm extends Component {
         <CssBaseline />
         <AppBar
           position='fixed'
+          // style={{ backgroundColor: this.state.currentColor }}
+          color='default'
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}>
@@ -146,6 +162,7 @@ class NewPaletteForm extends Component {
             <Typography variant='h6' color='inherit' noWrap>
               Persistent drawer
             </Typography>
+            <Button variant='contained' color='primary' onClick={this.handleSubmit}>Save Palette</Button>
           </Toolbar>
         </AppBar>
         <Drawer

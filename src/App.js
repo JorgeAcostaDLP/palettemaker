@@ -8,18 +8,27 @@ import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { palettes: seedColors }
+    this.findPalette = this.findPalette.bind(this)
+    this.savePalette = this.savePalette.bind(this)
+  }
+  findPalette(id) {
+    return this.state.palettes.find(function (palette) {
+      return palette.id === id
+    });
+  }
+  savePalette = (newPalette) => {
+    this.setState({ palettes: [...this.state.palettes, newPalette] })
+  }
   render() {
-    const findPalette = (id) => {
-      return seedColors.find(function (palette) {
-        return palette.id === id;
-      });
-    };
     return (
       <Switch>
         <Route
           exact
           path='/palette/new'
-          render={() => <NewPaletteForm></NewPaletteForm>}></Route>
+          render={(routeProps) => <NewPaletteForm {...routeProps} savePalette={this.savePalette}></NewPaletteForm>}></Route >
         <Route
           exact
           path='/palette/:paletteId/:colorId'
@@ -27,14 +36,14 @@ class App extends Component {
             <SingleColorPalette
               colorId={props.match.params.colorId}
               palette={generatePalette(
-                findPalette(props.match.params.paletteId)
+                this.findPalette(props.match.params.paletteId)
               )}></SingleColorPalette>
           )}></Route>
         <Route
           exact
           path='/'
           render={(props) => (
-            <PaletteList colors={seedColors} {...props}></PaletteList>
+            <PaletteList colors={this.state.palettes} {...props}></PaletteList>
           )}></Route>
         <Route
           exact
@@ -42,10 +51,10 @@ class App extends Component {
           render={(props) => (
             <Palette
               palette={generatePalette(
-                findPalette(props.match.params.id, seedColors)
+                this.findPalette(props.match.params.id, this.state.palettes)
               )}></Palette>
           )}></Route>
-      </Switch>
+      </Switch >
     );
   }
 }

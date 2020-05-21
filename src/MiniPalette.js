@@ -4,7 +4,6 @@ import styles from './styles/MiniPaletteStyles';
 
 function MiniPalette(props) {
   const { classes, paletteName, emoji, colors, id } = props;
-  console.log(id);
   const miniColorBoxes = colors.map((color) => (
     <div
       className={classes.miniColor}
